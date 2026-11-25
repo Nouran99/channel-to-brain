@@ -160,6 +160,20 @@ class Layout(unittest.TestCase):
         self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain"))), ["SKILL.md", "references"])
         self.assertEqual(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references")), ["knowledge-graph-step.md"])
 
+    def test_graph_and_private_repo_steps_are_required(self):
+        skill = open(P("skills", "channel-to-brain", "SKILL.md"), encoding="utf-8").read()
+        ref = open(P("skills", "channel-to-brain", "references", "knowledge-graph-step.md"), encoding="utf-8").read()
+        readme = open(P("README.md"), encoding="utf-8").read()
+        for text in (skill, ref, readme):
+            self.assertNotIn("off by default", text)
+            self.assertNotIn("Only on the user's request", text)
+            self.assertNotIn("Optional knowledge-graph", text)
+        for needle in ("## 14. Required step: knowledge graph export", "## 15. Required step: private GitHub repository",
+                       "## 16. Completion criteria", "knowlege", "Mandatory does not waive approval", "not skipped"):
+            self.assertIn(needle, skill, needle)
+        self.assertIn("PRIVATE", skill)
+        self.assertIn("incomplete", readme)
+
     def test_generated_files_in_sync(self):
         r = subprocess.run([sys.executable, P("adapters", "build_adapters.py"), "--check"], capture_output=True, text=True)
         self.assertEqual(r.returncode, 0, r.stdout)
