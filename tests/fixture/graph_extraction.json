@@ -1,0 +1,57 @@
+{
+ "nodes": [
+  {
+   "id": "v_demoAAAAAAA",
+   "label": "demoAAAAAAA Demo A",
+   "file_type": "document",
+   "kind": "video",
+   "source_file": "videos/demoAAAAAAA.md"
+  },
+  {
+   "id": "k_a_1",
+   "label": "State the audience before the task",
+   "file_type": "rationale",
+   "kind": "claim",
+   "source_file": "videos/demoAAAAAAA.md",
+   "source_location": "L12",
+   "stance": "his_view",
+   "caveat": "creator view, unverified"
+  },
+  {
+   "id": "c_prompting",
+   "label": "prompting",
+   "file_type": "concept",
+   "kind": "concept",
+   "source_file": "videos/demoAAAAAAA.md"
+  },
+  {
+   "id": "cov",
+   "label": "Coverage and limits (fictional)",
+   "file_type": "document",
+   "kind": "coverage",
+   "source_file": "COVERAGE_MANIFEST.md"
+  }
+ ],
+ "edges": [
+  {
+   "source": "k_a_1",
+   "target": "v_demoAAAAAAA",
+   "relation": "from_video",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "videos/demoAAAAAAA.md",
+   "source_location": "L12"
+  },
+  {
+   "source": "k_a_1",
+   "target": "c_prompting",
+   "relation": "mentions",
+   "confidence": "INFERRED",
+   "confidence_score": 0.6,
+   "source_file": "videos/demoAAAAAAA.md",
+   "source_location": "L12",
+   "basis": "topic match"
+  }
+ ],
+ "hyperedges": []
+}
