@@ -1,0 +1,2 @@
+description = "Report current Channel to Brain coverage by unique video ID, gaps and the one decision needed, if any."
+prompt = "Run `python3 <skill folder>/scripts/ctb.py --workdir <work folder> coverage` and `check` (the scripts are in this skill's folder; do not guess paths, ask the user for the work folder if unknown). Then report as section 11 describes: last successful interval per video, counts by unique ID (done, remaining, blocked), what is model-reported or machine-transcribed, errors, unverified items, and the one decision needed. Do not run any new analysis.\n"
