@@ -23,7 +23,7 @@ Why the folders are laid out this way: Claude Code and Gemini CLI both look for 
 ## Scripts: what runs where
 - `skills/channel-to-brain/scripts/ctb.py`: inventory by unique video ID, ranking, window plan, claim/record/resume, result checks, coverage counts. No network. Python 3 standard library.
 - `skills/channel-to-brain/scripts/analyze.py`: the model-call queue. It makes outbound HTTPS calls to the configured endpoint when run with `--confirm-live`, so it needs a client with a shell and network. Dry run is the default and sends nothing. Each live run needs the user's go-ahead.
-- `skills/channel-to-brain/scripts/graph_check.py`: structure checks (dangling edges, anchors, linked claims, coverage node, manifest labels) for the optional knowledge-graph step. No network. It does not judge whether a claim is right.
+- `skills/channel-to-brain/scripts/graph_check.py`: structure checks (dangling edges, anchors, linked claims, coverage node, manifest labels) for the required knowledge-graph step. No network. It does not judge whether a claim is right.
 - Tests use fictional fixtures and a mocked transport. No live call has been made: the endpoint, field names and quota behaviour are unproven. Request shape was read from Google's reference on 2026-11-25 (https://ai.google.dev/api/generate-content). Re-check before the first live call.
 - Safety behaviour of `analyze.py`: HTTPS only, to a host in `allowed_hosts` checked before the key is attached; redirects never followed; config validated before any call; one request at a time; success needs HTTP 200, non-empty text and finishReason STOP; any other result stops the run with no retry. The key is read from the environment variable named in the config and is never printed, logged or saved.
 
@@ -45,8 +45,8 @@ python3 $S/ctb.py --workdir $W check
 ```
 For your own channel: your CSV needs columns video_id, length_s, upload_date (YYYY-MM-DD or empty), views, relevance, knowledge_value, title; write your own prompt from SKILL 7.4; set `"model"` to the model you choose (there is no default) and `"key_env_name"` to the NAME of the environment variable that holds your key. A live run is `analyze.py --workdir W run --confirm-live`. Do it only when the user says go, with the key already in that variable.
 
-## Optional knowledge-graph step (off by default)
-Only on the user's request. The method is in `skills/channel-to-brain/references/knowledge-graph-step.md` and SKILL.md section 14. It uses Graphify (Graphify-Labs/graphify, PyPI `graphifyy`, two y), which was run once in a pilot at version 0.9.119 with no model backend. It was not run in any client from this repo. Installing it, a backend, a key, an upload and any spend are each the user's decision. The notes stay the authority and the graph never replaces them. Claude Chat and ChatGPT install nothing: they can only read an exported graph.
+## Required steps: knowledge graph and private repository
+Both are part of every normal run (the user made them mandatory). A run is complete only when the graph passes `graph_check.py` on the real graph and manifest, and a private GitHub repository named `<channel-name>-knowlege` exists, is confirmed private and matches the package (SKILL.md sections 14 to 16). Each approval gate still applies, and a pending gate means the run is incomplete, not skipped. The graph method is in `skills/channel-to-brain/references/knowledge-graph-step.md` and SKILL.md section 14. It uses Graphify (Graphify-Labs/graphify, PyPI `graphifyy`, two y), which was run once in a pilot at version 0.9.119 with no model backend. It was not run in any client from this repo. Installing it, a backend, a key, an upload and any spend are each the user's decision. The notes stay the authority and the graph never replaces them. Claude Chat and ChatGPT install nothing: they can only read an exported graph.
 
 ## Roles
 The coordinator is the main session in every client, not an agent file. Workers (researcher, analyst, reviewer) report back to it. Where agents are ignored or not installed (Claude Chat, ChatGPT, or Codex and OpenCode without the copied files), one session plays the roles in sequence.
@@ -57,7 +57,7 @@ The coordinator is the main session in every client, not an agent file. Workers 
 - `.agents/plugins/marketplace.json`, `plugins/channel-to-brain/` (generated, with an Agent Plugins `plugin.json`), `adapters/codex/agents/`: Codex.
 - `gemini-extension.json`, `agents/`, `commands/`: Gemini CLI.
 - `adapters/opencode/`: OpenCode. `adapters/chatgpt/`: ChatGPT.
-- `skills/channel-to-brain/references/`: the optional graph step.
+- `skills/channel-to-brain/references/`: the required graph step.
 - `tests/`: TESTS.md (client prompts), unit and layout tests. Run `python3 -m unittest discover -s tests` from the repo root. Two TOML parse checks need Python 3.11 and skip below it. The manifest schema check needs the `jsonschema` package and skips without it.
 
 ## Sources for the formats
