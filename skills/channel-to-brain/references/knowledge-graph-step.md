@@ -1,9 +1,9 @@
-# Optional step: knowledge graph export (off by default)
+# Required step: knowledge graph export
 
 Status: a pilot ran this once on one finished package (machine-derived, no human review, not tested in any client). Treat the steps as a tested-once method, not a verified pipeline.
 
 ## When
-Only when the user asks for a graph of the finished notes. Never start it on your own. The notes stay the authority: the graph is a navigation layer over them, and an answer must cite the note, not the graph.
+Required in every normal run (the user's instruction of 2026-11-25), after the notes are finished. Approval gates below still apply: a pending or declined gate leaves the step open, never skipped. The notes stay the authority: the graph is a navigation layer over them, and an answer must cite the note, not the graph.
 
 ## Tool (check again at run time)
 - Graphify, repository Graphify-Labs/graphify (Apache-2.0 as seen in the pilot), PyPI package `graphifyy` with two y. The single-y name `graphify` is a different project. Tested version: 0.9.119, Python 3.11.5 or newer.
@@ -38,7 +38,7 @@ Ship `graph.json`, the report, the coverage manifest and one self-contained HTML
 
 ## Clients
 - Claude Code, Codex, OpenCode, Gemini CLI: can do the step if the user approves the install (shell and network). Graphify ships skill folders for several clients; none were tested here.
-- Claude Chat and ChatGPT: do not install anything. They can read and question an exported graph and the manifest the user uploads.
+- Claude Chat and ChatGPT: do not install anything. They can read and question an exported graph and the manifest the user uploads. The step stays required: if the run happens in one of these clients, the graph step stays open until a client that can run it (or the user's export) supplies a graph that passes the gates.
 
 ## Report
 Say how many nodes and edges, which share is EXTRACTED, INFERRED and AMBIGUOUS, which files were semantic and which digest, the denominator, the gate results, and what was not checked. Never call the graph complete or reviewed.
