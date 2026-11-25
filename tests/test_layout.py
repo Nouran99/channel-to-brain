@@ -157,7 +157,8 @@ class Layout(unittest.TestCase):
                                  open(P("plugins", "channel-to-brain", "skills", "channel-to-brain", rel), encoding="utf-8").read(), rel)
 
     def test_chatgpt_folder_has_no_scripts(self):
-        self.assertEqual(os.listdir(P("adapters", "chatgpt", "channel-to-brain")), ["SKILL.md"])
+        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain"))), ["SKILL.md", "references"])
+        self.assertEqual(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references")), ["knowledge-graph-step.md"])
 
     def test_generated_files_in_sync(self):
         r = subprocess.run([sys.executable, P("adapters", "build_adapters.py"), "--check"], capture_output=True, text=True)
