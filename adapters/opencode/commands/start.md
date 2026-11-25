@@ -1,0 +1,6 @@
+---
+description: Start a Channel to Brain run from a channel URL. Prepares the plan and asks before any consequential step.
+---
+Follow the channel-to-brain skill for the channel URL given as the argument: $ARGUMENTS
+
+Do the silent first-run checklist in section 0 only. Install nothing. If no approved route for captions or model calls exists yet (section 13), stop and ask the user which route to approve instead of starting bulk work. If a problem occurs, something is unclear, or an important decision appears, stop and ask the user one focused question with a recommended answer. You are the coordinator (7.11). If the user approved the subagent split, delegate only to channel-researcher, channel-analyst and channel-reviewer where the client supports subagents; otherwise run the roles as sequential passes.
