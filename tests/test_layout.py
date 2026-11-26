@@ -169,7 +169,7 @@ class Layout(unittest.TestCase):
 
     def test_chatgpt_folder_has_no_scripts(self):
         self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain"))), ["LICENSE", "SKILL.md", "references"])
-        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["instructions-log.md", "knowledge-graph-step.md"])
+        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["instructions-log.md", "knowledge-graph-step.md", "principle-layer.md"])
 
     def test_principles_first_and_instructions_log(self):
         base = P("skills", "channel-to-brain")
