@@ -1,0 +1,10 @@
+{
+  "endpoint": "REPLACE_WITH_ENDPOINT_URL_WITH_{model}_PLACEHOLDER",
+  "model": "REPLACE_WITH_MODEL_NAME",
+  "key_env_name": "REPLACE_WITH_NAME_OF_THE_ENVIRONMENT_VARIABLE_HOLDING_THE_KEY",
+  "auth_header": "x-goog-api-key",
+  "price_in_per_m": 0,
+  "price_out_per_m": 0,
+  "hard_cap_usd": 0,
+  "temperature": 0.1
+}
