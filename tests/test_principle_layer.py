@@ -134,6 +134,27 @@ class PrincipleLayer(unittest.TestCase):
         finally:
             del os.environ["CTB_TEST_KEY_NOT_SET"]
 
+    def test_example_config_is_refused_until_filled(self):
+        os.environ["CTB_TEST_KEY2"] = "x"
+        try:
+            ex = os.path.join(ROOT, "skills", "channel-to-brain", "references", "model-config.example.json")
+            with self.assertRaises(SystemExit):
+                pl.Model(ex)  # placeholders are refused
+            c = json.load(open(ex))
+            c.update({"endpoint": "https://example.invalid/{model}", "model": "m", "key_env_name": "CTB_TEST_KEY2"})
+            cfg = os.path.join(self.d, "ok.json")
+            json.dump(c, open(cfg, "w"))
+            m = pl.Model(cfg)
+            with self.assertRaises(SystemExit) as e:
+                m("hi")  # cap is 0 in the example, so it stops before any call
+            self.assertEqual(e.exception.code, 3)
+            c["endpoint"] = "http://example.invalid/{model}"
+            json.dump(c, open(cfg, "w"))
+            with self.assertRaises(SystemExit):
+                pl.Model(cfg)
+        finally:
+            del os.environ["CTB_TEST_KEY2"]
+
     def test_script_has_no_default_model_or_key(self):
         src = open(os.path.join(SCRIPTS, "principle_layer.py"), encoding="utf-8").read().lower()
         for bad in ("gemini", "api_key=", "googleapis"):
