@@ -270,7 +270,7 @@ def build_graph(data, cov_text, pkg):
     for r in R:
         cid = "c:%s:%d" % (r["video"], r["n"])
         loc = "L%d" % r["line"]
-        nodes.append({"id": cid, "label": clean(r["text"])[:70], "kind": "principle" if r["type"] in CORE else "claim", "stance": r["type"],
+        nodes.append({"id": cid, "label": clean(r["text"])[:70], "kind": "claim", "stance": r["type"],
                       "source_file": r["file"], "source_location": loc, "caveat": "window %s; unverified" % r["win"]})
         edges.append({"source": cid, "target": "v:" + r["video"], "relation": "from_video", "confidence": "EXTRACTED", "confidence_score": 1.0,
                       "source_file": r["file"], "source_location": loc})
