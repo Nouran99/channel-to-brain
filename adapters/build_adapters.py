@@ -99,6 +99,9 @@ def gen():
         J("skills", "channel-to-brain", "references", "knowledge-graph-step.md"), encoding="utf-8").read()
     out["adapters/chatgpt/channel-to-brain/references/principle-layer.md"] = open(
         J("skills", "channel-to-brain", "references", "principle-layer.md"), encoding="utf-8").read()
+    for extra in ("verification.md", "model-config.example.json"):
+        out["adapters/chatgpt/channel-to-brain/references/" + extra] = open(
+            J("skills", "channel-to-brain", "references", extra), encoding="utf-8").read()
     out["adapters/chatgpt/channel-to-brain/references/instructions-log.md"] = open(
         J("skills", "channel-to-brain", "references", "instructions-log.md"), encoding="utf-8").read()
     # Codex and ChatGPT plugin: a generated subfolder, so marketplace source.path matches OpenAI's documented
@@ -113,7 +116,7 @@ def gen():
             out["plugins/channel-to-brain/skills/channel-to-brain/" + rel] = open(os.path.join(r, fn), encoding="utf-8").read()
     out["plugins/channel-to-brain/plugin.json"] = json.dumps({
         "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-        "name": "channel-to-brain", "version": "0.1.0",
+        "name": "channel-to-brain", "version": "0.2.0",
         "description": "A method for turning a creator's public YouTube channel into a source-attributed knowledge plugin, with honest coverage counts and an ask-first rule."}, indent=2) + "\n"
     # Each folder that is installed, uploaded or copied on its own carries a copy of the repository
     # LICENSE (PolyForm Noncommercial 1.0.0): the Codex plugin folder and its skill, the shared skill
