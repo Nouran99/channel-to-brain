@@ -109,6 +109,9 @@ def gen():
         "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
         "name": "channel-to-brain", "version": "0.1.0",
         "description": "A method for turning a creator's public YouTube channel into a source-attributed knowledge plugin, with honest coverage counts and an ask-first rule."}, indent=2) + "\n"
+    # The Codex plugin folder is installed on its own, so it carries a copy of the repository
+    # LICENSE (PolyForm Noncommercial 1.0.0).
+    out["plugins/channel-to-brain/LICENSE"] = open(J("LICENSE"), encoding="utf-8").read()
     return out
 
 def main():

@@ -16,7 +16,7 @@ One canonical skill (`skills/channel-to-brain/`) plus a thin adapter per client.
 | OpenCode | Skill from `.agents/skills` | Copy `skills/channel-to-brain/` to `.agents/skills/`, `adapters/opencode/agents/*.md` to `.opencode/agents/`, `adapters/opencode/commands/*.md` to `.opencode/commands/` | No plugin bundle for these parts: copy-in |
 | ChatGPT | Instructions only | Upload `adapters/chatgpt/channel-to-brain/` (Plugins > Skills > Create > Upload from your computer) | No scripts shipped. Whether ChatGPT skills can run scripts or reach the network is not documented in the sources checked: unverified. Use it to understand and review analysis results imported from a client with a shell |
 
-The Codex plugin folder is generated, not hand-edited: `adapters/build_adapters.py` copies the shared skill into `plugins/channel-to-brain/skills/` and writes its `plugin.json`, so `source.path` is `./plugins/channel-to-brain`, the shape in OpenAI's marketplace example. The marketplace add and install steps were not run here.
+The Codex plugin folder is generated, not hand-edited: `adapters/build_adapters.py` copies the shared skill into `plugins/channel-to-brain/skills/`, writes its `plugin.json` and copies `LICENSE` into it, so `source.path` is `./plugins/channel-to-brain`, the shape in OpenAI's marketplace example. The marketplace add and install steps were not run here.
 
 Why the folders are laid out this way: Claude Code and Gemini CLI both look for `agents/` and `commands/` at an extension root but with different file formats (Gemini: `kind`, `tools` names, TOML commands). The Claude manifest names its own files under `adapters/claude/`, which replaces its default scan, so the root `agents/` and `commands/` are Gemini's.
 
