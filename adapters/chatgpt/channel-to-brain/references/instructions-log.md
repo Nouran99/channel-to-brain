@@ -25,3 +25,9 @@ Instruction: Capture the creator's principles, reasoning, general knowledge and 
 Why: The goal of a channel run is the creator's way of thinking, not the exact state of a tool at recording time.
 Scope: whole method.
 Replaces: none.
+
+### 2026-11-26 | instruction | Guest and channel-owner content count the same
+Instruction: Do not treat knowledge differently by who says it. Content from a guest and content from the channel owner are equal. Do not mark guest content as less reliable and do not separate it into its own section or package. Keep the source video ID for every claim.
+Why: The owner cares about the information and knowledge, not the people.
+Scope: whole method, notes, indexes and graph.
+Replaces: none.
