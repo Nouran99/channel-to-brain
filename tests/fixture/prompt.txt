@@ -1,1 +1,13 @@
-Describe only what is visible on screen, not what is said. Say unreadable instead of guessing.
+Analyse this video window. Report in English, in two parts.
+
+Part 1, what is said (the main output). List, with approximate times:
+- principles and the reasons the speaker gives for them
+- mental models, rules of thumb, trade-offs and how the speaker frames the problem
+- practical strategy and step-by-step methods
+- mistakes the speaker warns about and why
+- examples, one line each, only as evidence for a principle
+Mark [unclear] where you cannot tell. Add nothing that was not said or shown.
+
+Part 2, what is shown. Describe diagrams, frameworks, step lists and slide headings that carry an idea. Say "unreadable" instead of guessing.
+
+Detail tags (low weight, unreliable): list separately any tool, model or product name, version, price, date, number or link, exactly as spoken or shown. Copy names as spoken or shown and never replace one from memory. A detail you are unsure of is still listed, marked uncertain. Never leave out a principle because a detail is unclear.
