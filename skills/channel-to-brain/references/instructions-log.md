@@ -55,3 +55,16 @@ Instruction: When a search verification finds a fact contradicted, add the corre
 Why: The owner wants the knowledge to be right without checking it by hand, and the original wording stays traceable.
 Scope: whole method; applies to every fact that goes through a search verification run.
 Replaces: none. Applies on top of the "Verify facts only" entry.
+
+### 2026-11-26 | instruction | No live model run without the owner's approval each time
+Instruction: Any live model run (any call that can cost money) needs the owner's approval every time. An earlier approval does not carry over to the next run. Keep it that way as the standing rule.
+Why: She wants control over every spend. It confirms her answer to the question whether live runs need approval each time ("keep it always like that").
+Scope: whole method; applies to every step that calls a model, including the principle layer and any verification mode that costs money.
+Replaces: none. Applies on top of the no-defaults rule for model, prices and spend cap.
+
+### 2026-11-26 | instruction | Ship the search verification skill inside the plugin
+Instruction: Include the search skill used for verification inside the plugin (references/deep-research-skill.md, free native mode), so a new user can run the verification step without anything from the owner's Drive.
+Why: The verification flow was not runnable from the repo alone.
+Scope: verification step (SKILL.md 7.8, references/verification.md).
+Replaces: none.
+
