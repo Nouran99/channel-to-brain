@@ -112,6 +112,15 @@ class Layout(unittest.TestCase):
             tools = re.findall(r"^  - (\w+)$", h, re.M)
             self.assertTrue(set(tools) <= known, tools)
 
+    def test_note_format_contract(self):
+        skill = open(P("skills", "channel-to-brain", "SKILL.md"), encoding="utf-8").read()
+        self.assertIn("## Spoken", skill)
+        self.assertIn("### Window HH:MM-HH:MM", skill)
+        ref = open(P("skills", "channel-to-brain", "references", "principle-layer.md"), encoding="utf-8").read()
+        self.assertIn("## Spoken", ref)
+        self.assertIn("references/verification.md", skill)
+        self.assertTrue(os.path.exists(P("skills", "channel-to-brain", "references", "verification.md")))
+
     @unittest.skipIf(tomllib is None, 'needs Python 3.11+ tomllib')
     def test_gemini_commands_toml(self):
         for fn in os.listdir(P("commands")):
@@ -169,7 +178,7 @@ class Layout(unittest.TestCase):
 
     def test_chatgpt_folder_has_no_scripts(self):
         self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain"))), ["LICENSE", "SKILL.md", "references"])
-        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["instructions-log.md", "knowledge-graph-step.md", "principle-layer.md"])
+        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["instructions-log.md", "knowledge-graph-step.md", "model-config.example.json", "principle-layer.md", "verification.md"])
 
     def test_principles_first_and_instructions_log(self):
         base = P("skills", "channel-to-brain")
