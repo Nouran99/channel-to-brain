@@ -31,3 +31,9 @@ Instruction: Do not treat knowledge differently by who says it. Content from a g
 Why: The owner cares about the information and knowledge, not the people.
 Scope: whole method, notes, indexes and graph.
 Replaces: none.
+
+### 2026-11-26 | instruction | Confirmed only after search verification
+Instruction: Mark nothing as confirmed unless it was verified by a search with the Perplexity-based search skill the owner provided, using the free route. The owner will not verify by hand, the verifying agent must. Everything not verified stays labeled "unverified". Verification runs only under a plan the owner has seen (unit of checking, cost, time); the cost must be zero unless she approves otherwise.
+Why: Information must be sound, and she does not want to check it herself.
+Scope: whole method; applies to claims, detail tags and any status label.
+Replaces: refines the 2026-11-26 "Principles first" entry on checks. Without a verification run, detail tags and claims stay "unverified"; with one, only the verified ones may be labeled confirmed.
