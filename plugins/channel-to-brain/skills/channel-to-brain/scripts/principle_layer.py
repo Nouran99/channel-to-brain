@@ -14,7 +14,8 @@ Steps (SKILL.md section 7.12, references/principle-layer.md):
   graph    write graph/extraction.json and coverage manifest for graph_check.py (free)
   check    count checks (free)
 Model config JSON: {"endpoint": "https://.../{model}:generateContent", "model": "...", "key_env_name": "ENV_NAME",
- "price_in_per_m": 0.0, "price_out_per_m": 0.0, "hard_cap_usd": 0.0, "temperature": 0.1}
+ "price_in_per_m": 0.0, "price_out_per_m": 0.0, "hard_cap_usd": 0.0, "temperature": 0.1,
+ "auth_header": "x-goog-api-key"}  (auth_header is optional; example file: references/model-config.example.json)
 The key is read from the named environment variable only and is never printed or saved.
 Every output is labelled UNVERIFIED unless a search verification run (SKILL.md 7.8) says otherwise.
 """
@@ -310,6 +311,11 @@ class Model:
         for k in ("endpoint", "model", "key_env_name", "price_in_per_m", "price_out_per_m", "hard_cap_usd"):
             if k not in c:
                 die("model config needs %s (there are no defaults; the owner decides model, prices and cap)" % k)
+        for k in ("endpoint", "model", "key_env_name"):
+            if not isinstance(c[k], str) or not c[k].strip() or c[k].startswith("REPLACE"):
+                die("model config field %s is empty or still the example placeholder" % k)
+        if not c["endpoint"].startswith("https://"):
+            die("endpoint must start with https://")
         if not (isinstance(c["hard_cap_usd"], (int, float)) and c["hard_cap_usd"] >= 0):
             die("hard_cap_usd must be a number, 0 or more")
         self.c = c
@@ -323,7 +329,7 @@ class Model:
             die("STOP: spend cap reached (%.4f of %.4f). Ask the owner before continuing." % (self.spent, self.c["hard_cap_usd"]), 3)
         body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"temperature": self.c.get("temperature", 0.1)}}
         req = urllib.request.Request(self.c["endpoint"].format(model=self.c["model"]), data=json.dumps(body).encode(),
-                                     headers={"Content-Type": "application/json", "x-goog-api-key": self.key})
+                                     headers={"Content-Type": "application/json", self.c.get("auth_header", "x-goog-api-key"): self.key})
         try:
             d = json.load(urllib.request.urlopen(req, timeout=300))
         except urllib.error.HTTPError as ex:
