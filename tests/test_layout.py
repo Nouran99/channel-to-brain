@@ -169,7 +169,21 @@ class Layout(unittest.TestCase):
 
     def test_chatgpt_folder_has_no_scripts(self):
         self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain"))), ["LICENSE", "SKILL.md", "references"])
-        self.assertEqual(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references")), ["knowledge-graph-step.md"])
+        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["instructions-log.md", "knowledge-graph-step.md"])
+
+    def test_principles_first_and_instructions_log(self):
+        base = P("skills", "channel-to-brain")
+        skill = open(os.path.join(base, "SKILL.md"), encoding="utf-8").read()
+        self.assertIn("Principles first", skill)
+        self.assertIn("references/instructions-log.md", skill)
+        self.assertIn("PRINCIPLES_INDEX", skill)
+        self.assertNotIn("TOPIC_INDEX", skill)
+        log = open(os.path.join(base, "references", "instructions-log.md"), encoding="utf-8").read()
+        self.assertIn("## Entries", log)
+        self.assertRegex(log, r"### \d{4}-\d{2}-\d{2} \| (instruction|knowledge) \| ")
+        default = open(os.path.join(base, "prompt.default.txt"), encoding="utf-8").read()
+        fixture = open(P("tests", "fixture", "prompt.txt"), encoding="utf-8").read()
+        self.assertEqual(default, fixture)
 
     def test_graph_and_private_repo_steps_are_required(self):
         skill = open(P("skills", "channel-to-brain", "SKILL.md"), encoding="utf-8").read()
