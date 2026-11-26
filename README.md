@@ -1,8 +1,17 @@
-# Channel to Brain (v0.1.0)
+# Channel to Brain (v0.2.0)
 
 Channel to Brain is a method for turning a creator's public YouTube channel into a source-attributed knowledge plugin for an AI assistant. It keeps honest coverage counts by unique video ID and follows an ask-first rule: when a problem, unclear point or important decision comes up, the agent stops and asks the user. It never retries, switches model or route, or installs anything on its own.
 
-Status: prepared for your test. Nothing here has been loaded in any client, and no client validator has been run. The ask-first rule lives in the text of the skill and commands in every client. The clients enforce different things, so the guards are not equivalent.
+Status: version 0.2.0, for personal use (see License). The method and scripts are tested offline. Nothing here has been loaded in any client yet and no client validator has been run, so treat every install path below as untried until you run it. The ask-first rule lives in the text of the skill and commands in every client. The clients enforce different things, so the guards are not equivalent.
+
+## Quick start (plain language)
+1. Install it in the client you use (table below). Claude Code and Claude Chat are the first two to try.
+2. Give the assistant a channel URL and say "start Channel to Brain". It prepares a plan and asks before any step that costs money or sends anything.
+3. It analyses the videos in ranked order, writes one note per video, then (optional step) builds the principle layer: grouped principles with an overview per group, a graph, and checks. See `skills/channel-to-brain/references/principle-layer.md`.
+4. Facts in the notes can be verified by search. Verified or not, every line keeps the original claim as said in the video, with the correction or completion beside it. See `skills/channel-to-brain/references/verification.md`.
+5. A worked example with fictional data is in `examples/principle-layer-demo.md`.
+
+What you decide before any model call: the model, its price and a spend cap. Nothing has a default. A starting file is `skills/channel-to-brain/references/model-config.example.json` (its cap is 0, so it stops until you set one).
 
 ## One source, several clients
 One canonical skill (`skills/channel-to-brain/`) plus a thin adapter per client. The agent and command files outside the Claude folder are generated from the Claude files by `adapters/build_adapters.py`; `python3 adapters/build_adapters.py --check` fails if they drift.
@@ -71,7 +80,7 @@ The coordinator is the main session in every client, not an agent file. Workers 
 See `tests/TESTS.md`: runnable prompts with a fictional fixture. They are the package author's internal checks. Nothing is "verified in client" until the user runs them.
 
 ## License
-PolyForm Noncommercial License 1.0.0 (SPDX `PolyForm-Noncommercial-1.0.0`), see `LICENSE`. It permits noncommercial use only.
+PolyForm Noncommercial License 1.0.0 (SPDX `PolyForm-Noncommercial-1.0.0`), see `LICENSE`. It permits noncommercial use only. The owner uses these skills for personal use only and left the license as it is.
 
 Each folder that is installed, uploaded or copied on its own has a copy of `LICENSE`: `plugins/channel-to-brain/` and its `skills/channel-to-brain/`, `skills/channel-to-brain/` and `adapters/chatgpt/channel-to-brain/`. `adapters/build_adapters.py` writes these copies from the root `LICENSE`, and `--check` fails if one differs.
 
