@@ -5,7 +5,7 @@ Adds a principle-first layer on top of the per-video notes: type and idea label 
 Helper: `scripts/principle_layer.py` (standard library only, offline-tested with a mock model). It has no default model, price, spend cap or channel. The owner decides the model and cap before any model call (SKILL.md section 2). The key comes from an environment variable only.
 
 ## Input
-A package folder with `videos/<id>.md`, one note per video. Spoken claims are the bullet lines under "Spoken" sections inside "### Window HH:MM-HH:MM" blocks. On-screen items are skipped. A trailing `[details unreliable: ...]` tag stays in the note and is copied to the pages.
+A package folder with `videos/<id>.md`, one note per video. Notes follow SKILL.md 7.7: idea sections on top and, as the source record, a `## Spoken` section with `### Window HH:MM-HH:MM` blocks. The helper reads only the Spoken window blocks, so a note without them has zero claims (the `claims` step reports the count; check it before any model call). Spoken claims are the bullet lines under "Spoken" sections inside "### Window HH:MM-HH:MM" blocks. On-screen items are skipped. A trailing `[details unreliable: ...]` tag stays in the note and is copied to the pages.
 
 ## Rules that hold in every step
 1. The goal is ways of thinking, general principles and practical strategy. Exact versions, names, prices and dates are low-weight detail tags and never a reason to stop.
