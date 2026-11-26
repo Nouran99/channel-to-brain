@@ -73,4 +73,6 @@ See `tests/TESTS.md`: runnable prompts with a fictional fixture. They are the pa
 ## License
 PolyForm Noncommercial License 1.0.0 (SPDX `PolyForm-Noncommercial-1.0.0`), see `LICENSE`. It permits noncommercial use only.
 
+Each folder that is installed, uploaded or copied on its own has a copy of `LICENSE`: `plugins/channel-to-brain/` and its `skills/channel-to-brain/`, `skills/channel-to-brain/` and `adapters/chatgpt/channel-to-brain/`. `adapters/build_adapters.py` writes these copies from the root `LICENSE`, and `--check` fails if one differs.
+
 Required Notice: Copyright 2026 Nouran Darwish
