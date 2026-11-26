@@ -82,3 +82,8 @@ Required Notice: Copyright 2026 Nouran Darwish
 The goal of a run is the creator's way of thinking: principles, reasoning, general knowledge and practical strategy. Exact tool names, versions, prices and dates are kept only as low-weight detail tags, marked unreliable. They are never verified by default and never a reason to stop or fail a check. Notes are organised by idea, the index is `PRINCIPLES_INDEX` with a separate `DETAIL_TAGS` appendix, and the default analysis prompt is `skills/channel-to-brain/prompt.default.txt`.
 
 Dated owner instructions and added knowledge live in `skills/channel-to-brain/references/instructions-log.md`. The skill reads it at the start of every run. To add one, append an entry in the format described in that file, run `python3 adapters/build_adapters.py`, then `python3 -m unittest discover -s tests`.
+
+## Principle layer
+
+After the per-video notes exist, an optional step groups the spoken claims into principle groups, writes a short overview per group, builds a graph around the groups and runs count checks. See `skills/channel-to-brain/references/principle-layer.md` and `skills/channel-to-brain/scripts/principle_layer.py`. It has no default model, price or spend cap: the owner decides them before any model call. Only facts are verified; opinions and advice are stored as stated.
+
