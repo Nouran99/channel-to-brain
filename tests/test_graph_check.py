@@ -20,6 +20,24 @@ class GraphCheck(unittest.TestCase):
         self.assertTrue(r["ok"], r)
         self.assertEqual(r["counts"]["nodes"], 4)
 
+    def test_detail_tag_is_ignored_and_principle_is_counted(self):
+        d = load("graph_extraction.json")
+        # a detail tag with a wrong-looking version, no anchor and no basis must not fail the check
+        d["nodes"].append({"id": "t_ver", "kind": "detail_tag", "label": "Tool 99.9 (unreliable)"})
+        d["edges"].append({"source": "k_a_1", "target": "t_ver", "relation": "mentions", "confidence": "EXTRACTED",
+                           "confidence_score": 1.0, "source_file": "videos/demoAAAAAAA.md", "source_location": "L12"})
+        d["nodes"][1]["kind"] = "principle"
+        r = graph_check.check(d, load("graph_manifest.json"))
+        self.assertTrue(r["ok"], r)
+        self.assertEqual(r["counts"]["detail_tags"], 1)
+        self.assertEqual(r["counts"]["principles_per_video"], {"v_demoAAAAAAA": 1})
+
+    def test_principle_needs_anchor(self):
+        d = load("graph_extraction.json")
+        d["nodes"][1]["kind"] = "principle"
+        del d["nodes"][1]["source_location"]
+        self.assertTrue(any("principle without" in p for p in graph_check.check(d)["problems"]))
+
     def test_dangling_edge(self):
         d = load("graph_extraction.json")
         d["edges"].append({"source": "k_a_1", "target": "nope", "relation": "mentions", "confidence": "EXTRACTED"})
