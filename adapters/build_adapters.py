@@ -104,14 +104,20 @@ def gen():
         d[:] = [x for x in d if x != "__pycache__"]
         for fn in f:
             rel = os.path.relpath(os.path.join(r, fn), base).replace(os.sep, "/")
+            if rel == "LICENSE":
+                continue  # generated below from the root LICENSE, so a run never depends on the previous one
             out["plugins/channel-to-brain/skills/channel-to-brain/" + rel] = open(os.path.join(r, fn), encoding="utf-8").read()
     out["plugins/channel-to-brain/plugin.json"] = json.dumps({
         "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
         "name": "channel-to-brain", "version": "0.1.0",
         "description": "A method for turning a creator's public YouTube channel into a source-attributed knowledge plugin, with honest coverage counts and an ask-first rule."}, indent=2) + "\n"
-    # The Codex plugin folder is installed on its own, so it carries a copy of the repository
-    # LICENSE (PolyForm Noncommercial 1.0.0).
-    out["plugins/channel-to-brain/LICENSE"] = open(J("LICENSE"), encoding="utf-8").read()
+    # Each folder that is installed, uploaded or copied on its own carries a copy of the repository
+    # LICENSE (PolyForm Noncommercial 1.0.0): the Codex plugin folder and its skill, the shared skill
+    # folder (copied in for OpenCode and Codex), and the ChatGPT upload folder.
+    lic = open(J("LICENSE"), encoding="utf-8").read()
+    for folder in ("plugins/channel-to-brain", "plugins/channel-to-brain/skills/channel-to-brain",
+                   "skills/channel-to-brain", "adapters/chatgpt/channel-to-brain"):
+        out[folder + "/LICENSE"] = lic
     return out
 
 def main():
