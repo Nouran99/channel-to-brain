@@ -50,3 +50,8 @@ Why: The owner asked on 2026-11-26 for these extra steps to be added to the plug
 Scope: whole method, after the per-video notes.
 Replaces: none.
 
+### 2026-11-26 | instruction | Corrections and completions beside verified facts
+Instruction: When a search verification finds a fact contradicted, add the correction beside it. When it finds the fact partly right, complete the missing information. Do this automatically, with no review step. Keep the original claim exactly as said in the video. Put the correction or completion in a separate line with its sources and the access date.
+Why: The owner wants the knowledge to be right without checking it by hand, and the original wording stays traceable.
+Scope: whole method; applies to every fact that goes through a search verification run.
+Replaces: none. Applies on top of the "Verify facts only" entry.
