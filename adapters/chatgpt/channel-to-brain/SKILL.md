@@ -256,6 +256,9 @@ Rules
 ### 7.12 Principle layer (after the per-video notes exist)
 Run it after the notes exist and the user has seen the expected cost: type and idea label per spoken claim, strict principle groups, a short overview per group, group pages, a graph around the groups and count checks. Steps, rules, prompts and honest limits are in `references/principle-layer.md`; the helper is `scripts/principle_layer.py` (no default model, price or cap; the owner decides them first, section 2). The speaker does not matter: guest and host claims count the same, keep the video ID on every claim. Output stays UNVERIFIED until a search verification run says otherwise (7.8).
 
+### 7.13 Creator resources (default step)
+Every resource available through a video description is added to the package automatically (the owner's rule of 2026-11-27): free guides, newsletter posts, workshop material, prompt files and public pages the creator links. Run it after inventory and again before the package is final. Steps, the required secret check (`scripts/resource_scan.py`, run until it prints "clean"; strip or exclude anything it finds) and limits are in `references/resources.md`. Resources stay local until the owner approves the package.
+
 ## 8. Error handling for the model API
 Record the exact status and sanitized error text for every failure. Under the user's global rule (section 2), every failure is a stop-and-ask point: stop the affected work, report the grounded problem with a proposed next step, and wait for the user's answer. A retry, a wait-and-continue, a route switch or any other recovery happens only when the user has expressly approved that recovery for that case. Researching options while waiting is fine; acting on them is not.
 
