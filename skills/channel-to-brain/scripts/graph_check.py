@@ -89,7 +89,7 @@ def check(data, manifest=None):
     for e in edges:
         if isinstance(e, dict) and e.get("relation") == "from_video":
             for a, b in ((e.get("source"), e.get("target")), (e.get("target"), e.get("source"))):
-                if a in ids and b in ids and ids[a].get("kind") in ("claim", "principle") and ids[b].get("kind") == "video":
+                if a in ids and b in ids and ids[a].get("kind") == "principle" and ids[b].get("kind") == "video":
                     per_video[b] = per_video.get(b, 0) + 1
     counts = {"nodes": len(ids), "edges": len(edges), "confidence": conf_count,
               "principles_per_video": per_video,
