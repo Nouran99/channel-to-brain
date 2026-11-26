@@ -3,6 +3,10 @@
   "displayName": "Channel to Brain",
   "version": "0.1.0",
   "description": "A method for turning a creator's public YouTube channel into a source-attributed knowledge plugin, with honest coverage counts, an ask-first rule and an optional coordinator, researcher, analyst and reviewer split.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0",
   "agents": [
     "./adapters/claude/agents/analyst.md",
     "./adapters/claude/agents/researcher.md",

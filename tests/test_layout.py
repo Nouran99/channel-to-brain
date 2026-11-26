@@ -22,11 +22,22 @@ class Layout(unittest.TestCase):
         for f in (".claude-plugin/plugin.json", "plugins/channel-to-brain/plugin.json", ".agents/plugins/marketplace.json", "gemini-extension.json"):
             json.load(open(P(*f.split("/"))))
 
-    def test_no_author_or_license_fields(self):
+    def test_author_and_license_as_chosen(self):
+        # The user chose the author name and the PolyForm Noncommercial license on 2026-11-26.
         for f in (".claude-plugin/plugin.json", "plugins/channel-to-brain/plugin.json", "gemini-extension.json"):
             d = json.load(open(P(*f.split("/"))))
-            for k in ("author", "license", "repository", "homepage"):
+            for k in ("repository", "homepage"):
                 self.assertNotIn(k, d, f)
+            if f == ".claude-plugin/plugin.json":
+                self.assertEqual(d.get("author"), {"name": "Nouran Darwish"}, f)
+                self.assertEqual(d.get("license"), "PolyForm-Noncommercial-1.0.0", f)
+            else:
+                self.assertNotIn("author", d, f)
+                self.assertNotIn("license", d, f)
+        with open(P("LICENSE"), encoding="utf-8") as fh:
+            lic = fh.read()
+        self.assertTrue(lic.startswith("Required Notice: Copyright 2026 Nouran Darwish\n"))
+        self.assertIn("# PolyForm Noncommercial License 1.0.0", lic)
 
     @unittest.skipIf(jsonschema is None, "needs the jsonschema package")
     def test_plugin_json_against_official_schema(self):
