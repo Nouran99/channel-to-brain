@@ -1,0 +1,14 @@
+{
+  "name": "channel-to-brain",
+  "owner": {
+    "name": "Nouran99"
+  },
+  "description": "Claude Code marketplace for the Channel to Brain plugin.",
+  "plugins": [
+    {
+      "name": "channel-to-brain",
+      "source": "./",
+      "description": "A method for turning a creator's public YouTube channel into a source-attributed knowledge plugin, with honest coverage counts and an ask-first rule."
+    }
+  ]
+}

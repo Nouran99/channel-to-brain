@@ -9,7 +9,7 @@ One canonical skill (`skills/channel-to-brain/`) plus a thin adapter per client.
 
 | Client | What loads | Install | Gaps |
 |---|---|---|---|
-| Claude Code | Skill, 3 agents, 4 commands (`.claude-plugin/plugin.json` points to `adapters/claude/`) | `claude plugin validate ./channel-to-brain`, then `claude --plugin-dir ./channel-to-brain` | Commands are description-only, so not typed-only |
+| Claude Code | Skill, 3 agents, 4 commands (`.claude-plugin/plugin.json` points to `adapters/claude/`) | `/plugin marketplace add Nouran99/channel-to-brain`, then `/plugin install channel-to-brain@channel-to-brain` (marketplace in `.claude-plugin/marketplace.json`). Local copy: `claude plugin validate ./channel-to-brain`, then `claude --plugin-dir ./channel-to-brain` | Commands are description-only, so not typed-only |
 | Claude Chat | Skill (agents ignored, commands act as skills) | Customize > Plugins > Add > Upload plugin, with a zip of this repo. Needs Code execution on | Network documented for package sources only: run `ctb.py` there, not live analysis |
 | Codex | Skill, via the generated plugin folder `plugins/channel-to-brain/` listed in `.agents/plugins/marketplace.json` | `codex plugin marketplace add Nouran99/channel-to-brain`, then install `channel-to-brain` from that marketplace (restart the ChatGPT desktop app if you use it there). Or copy `skills/channel-to-brain/` to `.agents/skills/` | Agents are copy-in: copy `adapters/codex/agents/*.toml` to `.codex/agents/`. They cannot restrict tools: the session's sandbox applies |
 | Gemini CLI | Extension: skill, 3 agents (`agents/`), 4 TOML commands (`commands/`) | `gemini extensions install https://github.com/Nouran99/channel-to-brain` | Subagents are a preview feature and cannot call other subagents, so the main session coordinates |
@@ -53,7 +53,7 @@ The coordinator is the main session in every client, not an agent file. Workers 
 
 ## Layout
 - `skills/channel-to-brain/`: SKILL.md and `scripts/`.
-- `.claude-plugin/plugin.json`, `adapters/claude/`: Claude.
+- `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `adapters/claude/`: Claude.
 - `.agents/plugins/marketplace.json`, `plugins/channel-to-brain/` (generated, with an Agent Plugins `plugin.json`), `adapters/codex/agents/`: Codex.
 - `gemini-extension.json`, `agents/`, `commands/`: Gemini CLI.
 - `adapters/opencode/`: OpenCode. `adapters/chatgpt/`: ChatGPT.
