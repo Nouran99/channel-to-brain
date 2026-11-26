@@ -63,12 +63,12 @@ def check(data, manifest=None):
         if e.get("relation") in LINK_RELATIONS:
             a, b = ids[s], ids[t]
             for v, other in ((s, b), (t, a)):
-                if ids[v].get("kind") == "video" and other.get("kind") == "claim":
+                if ids[v].get("kind") == "video" and other.get("kind") in ("claim", "principle"):
                     linked.add(v)
     for i, n in ids.items():
         k = n.get("kind")
-        if k == "claim" and not (_s(n.get("source_file")) and _s(n.get("source_location"))):
-            problems.append("claim without source_file and source_location: " + i)
+        if k in ("claim", "principle") and not (_s(n.get("source_file")) and _s(n.get("source_location"))):
+            problems.append("%s without source_file and source_location: " % k + i)
         if k == "video" and i not in linked:
             problems.append("video with no linked claim: " + i)
     # Coverage evidence is a coverage node, or a manifest that labels every source file (checked below).
@@ -78,12 +78,22 @@ def check(data, manifest=None):
         if not isinstance(manifest, dict):
             problems.append("manifest must be a JSON object keyed by source file")
         else:
-            files = {n.get("source_file") for n in ids.values() if n.get("kind") in ("claim", "video")}
+            files = {n.get("source_file") for n in ids.values() if n.get("kind") in ("claim", "principle", "video")}
             for f in sorted(x for x in files if _s(x)):
                 m = manifest.get(f)
                 if not isinstance(m, dict) or not _s(m.get("mode")):
                     problems.append("source file not labelled with a mode in the manifest: " + f)
-    counts = {"nodes": len(ids), "edges": len(edges), "confidence": conf_count}
+    # detail_tag nodes are low weight and unreliable by design: no check applies to them, and they never
+    # count as principle coverage. Principles per video are counted from from_video links.
+    per_video = {}
+    for e in edges:
+        if isinstance(e, dict) and e.get("relation") == "from_video":
+            for a, b in ((e.get("source"), e.get("target")), (e.get("target"), e.get("source"))):
+                if a in ids and b in ids and ids[a].get("kind") in ("claim", "principle") and ids[b].get("kind") == "video":
+                    per_video[b] = per_video.get(b, 0) + 1
+    counts = {"nodes": len(ids), "edges": len(edges), "confidence": conf_count,
+              "principles_per_video": per_video,
+              "detail_tags": sum(1 for n in ids.values() if n.get("kind") == "detail_tag")}
     return {"ok": not problems, "problems": problems, "counts": counts}
 
 
