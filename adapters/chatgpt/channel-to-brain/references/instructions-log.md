@@ -37,3 +37,16 @@ Instruction: Mark nothing as confirmed unless it was verified by a search with t
 Why: Information must be sound, and she does not want to check it herself.
 Scope: whole method; applies to claims, detail tags and any status label.
 Replaces: refines the 2026-11-26 "Principles first" entry on checks. Without a verification run, detail tags and claims stay "unverified"; with one, only the verified ones may be labeled confirmed.
+
+### 2026-11-26 | instruction | Verify facts only; opinions and advice stored as stated
+Instruction: Only factual information is verified by search before it may be marked confirmed. Opinions, advice and personal choices are stored as stated in the channel and are not verified or marked either way. Keep the distinction between facts and opinions in the notes.
+Why: Facts must be sound. Advice and choices are what the speaker said, and there is nothing to check.
+Scope: whole method; narrows the "Confirmed only after search verification" entry to facts.
+Replaces: refines the 2026-11-26 "Confirmed only after search verification" entry.
+
+### 2026-11-26 | instruction | Add the principle layer steps
+Instruction: Add the extra post-processing steps used on the first two channel runs (type and idea label per claim, strict principle groups, group overviews, a graph around the groups, count checks) as a standard step after the per-video notes: SKILL.md 7.12, references/principle-layer.md, scripts/principle_layer.py. Model, prices and spend cap are not defaulted; the owner decides them before any model call.
+Why: The owner asked on 2026-11-26 for these extra steps to be added to the plugin.
+Scope: whole method, after the per-video notes.
+Replaces: none.
+
