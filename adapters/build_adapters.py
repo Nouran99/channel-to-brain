@@ -97,6 +97,8 @@ def gen():
     out["adapters/chatgpt/channel-to-brain/SKILL.md"] = m.group(1) + note + body
     out["adapters/chatgpt/channel-to-brain/references/knowledge-graph-step.md"] = open(
         J("skills", "channel-to-brain", "references", "knowledge-graph-step.md"), encoding="utf-8").read()
+    out["adapters/chatgpt/channel-to-brain/references/principle-layer.md"] = open(
+        J("skills", "channel-to-brain", "references", "principle-layer.md"), encoding="utf-8").read()
     out["adapters/chatgpt/channel-to-brain/references/instructions-log.md"] = open(
         J("skills", "channel-to-brain", "references", "instructions-log.md"), encoding="utf-8").read()
     # Codex and ChatGPT plugin: a generated subfolder, so marketplace source.path matches OpenAI's documented
