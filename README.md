@@ -76,3 +76,9 @@ PolyForm Noncommercial License 1.0.0 (SPDX `PolyForm-Noncommercial-1.0.0`), see 
 Each folder that is installed, uploaded or copied on its own has a copy of `LICENSE`: `plugins/channel-to-brain/` and its `skills/channel-to-brain/`, `skills/channel-to-brain/` and `adapters/chatgpt/channel-to-brain/`. `adapters/build_adapters.py` writes these copies from the root `LICENSE`, and `--check` fails if one differs.
 
 Required Notice: Copyright 2026 Nouran Darwish
+
+## Principles first and standing instructions
+
+The goal of a run is the creator's way of thinking: principles, reasoning, general knowledge and practical strategy. Exact tool names, versions, prices and dates are kept only as low-weight detail tags, marked unreliable. They are never verified by default and never a reason to stop or fail a check. Notes are organised by idea, the index is `PRINCIPLES_INDEX` with a separate `DETAIL_TAGS` appendix, and the default analysis prompt is `skills/channel-to-brain/prompt.default.txt`.
+
+Dated owner instructions and added knowledge live in `skills/channel-to-brain/references/instructions-log.md`. The skill reads it at the start of every run. To add one, append an entry in the format described in that file, run `python3 adapters/build_adapters.py`, then `python3 -m unittest discover -s tests`.
