@@ -68,3 +68,8 @@ Why: The verification flow was not runnable from the repo alone.
 Scope: verification step (SKILL.md 7.8, references/verification.md).
 Replaces: none.
 
+### 2026-11-26 | instruction | No external model as judge when comparing packages
+Instruction: When two packages are compared, no external model is used as judge. Use rubric scoring only; the evaluator reads and scores the answers itself and explains how it scored.
+Why: The owner wants the comparison to be explainable and free of a second model's opinion.
+Scope: package comparison and evaluation runs.
+Replaces: none.
