@@ -10,7 +10,7 @@ A package folder with `videos/<id>.md`, one note per video. Spoken claims are th
 ## Rules that hold in every step
 1. The goal is ways of thinking, general principles and practical strategy. Exact versions, names, prices and dates are low-weight detail tags and never a reason to stop.
 2. The speaker does not matter. Guest, host and podcast claims count the same. No marker for guest or multi-speaker content, no separate section. Write "the material", not "the creator". Keep the video ID on every claim.
-3. Only facts are verified. Opinions, advice and personal choices are stored as stated in the channel and need no verification. Nothing is marked confirmed without a search verification (see the instructions log).
+3. Only facts are verified. Opinions, advice and personal choices are stored as stated in the channel and need no verification. Nothing is marked confirmed without a search verification (see the instructions log). A contradicted fact gets a correction beside it and a partly right fact gets the missing information added, automatically and with no review step. The original claim stays as said in the video; the correction is a separate line with sources and the access date.
 4. Tell the owner the expected cost before any model call. Stop on the first API error, no retries. Saved responses are never run again.
 5. Never use em dashes in outputs.
 
