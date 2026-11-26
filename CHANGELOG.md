@@ -7,7 +7,9 @@
 - Verification rules (`references/verification.md`): facts only, correction or completion beside the original claim with sources and access date; opinions and advice stored as stated.
 - `graph_check.py` understands principle and detail-tag nodes and counts principles per video.
 - Docs: quick start, status line, test counts, smoke tests updated. 84+ offline tests (run the command for the current count).
-- Known gaps: no client load or validator run, no live model call, the search skill used for verification is supplied by the owner and is not in this repo.
+- The search method for verification is included: `references/deep-research-skill.md`, a copy of the MIT-licensed deep-research skill by Eric Andrade (notice in `references/deep-research-LICENSE-MIT.txt`). Native mode only, no cost.
+- Instructions log: no live model run without the owner's approval each time.
+- Known gaps: no client load or validator run, no live model call.
 
 ## 0.1.0 (2026-11-25)
 - First version: skill, three worker roles, four commands, adapters for Claude, ChatGPT, Codex, OpenCode and Gemini CLI, offline-tested helper scripts, knowledge-graph step, license.
