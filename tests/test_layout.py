@@ -22,11 +22,16 @@ class Layout(unittest.TestCase):
         for f in (".claude-plugin/plugin.json", "plugins/channel-to-brain/plugin.json", ".agents/plugins/marketplace.json", "gemini-extension.json"):
             json.load(open(P(*f.split("/"))))
 
-    def test_no_author_or_license_fields(self):
+    def test_no_license_fields_and_author_as_chosen(self):
+        # The user chose the author name on 2026-11-26; the license is still undecided.
         for f in (".claude-plugin/plugin.json", "plugins/channel-to-brain/plugin.json", "gemini-extension.json"):
             d = json.load(open(P(*f.split("/"))))
-            for k in ("author", "license", "repository", "homepage"):
+            for k in ("license", "repository", "homepage"):
                 self.assertNotIn(k, d, f)
+            if f == ".claude-plugin/plugin.json":
+                self.assertEqual(d.get("author"), {"name": "Nouran Darwish"}, f)
+            else:
+                self.assertNotIn("author", d, f)
 
     @unittest.skipIf(jsonschema is None, "needs the jsonschema package")
     def test_plugin_json_against_official_schema(self):
