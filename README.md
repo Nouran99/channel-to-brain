@@ -71,4 +71,6 @@ The coordinator is the main session in every client, not an agent file. Workers 
 See `tests/TESTS.md`: runnable prompts with a fictional fixture. They are the package author's internal checks. Nothing is "verified in client" until the user runs them.
 
 ## License
-No license file or license field is set.
+PolyForm Noncommercial License 1.0.0 (SPDX `PolyForm-Noncommercial-1.0.0`), see `LICENSE`. It permits noncommercial use only.
+
+Required Notice: Copyright 2026 Nouran Darwish

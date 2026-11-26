@@ -6,6 +6,7 @@
   "author": {
     "name": "Nouran Darwish"
   },
+  "license": "PolyForm-Noncommercial-1.0.0",
   "agents": [
     "./adapters/claude/agents/analyst.md",
     "./adapters/claude/agents/researcher.md",
