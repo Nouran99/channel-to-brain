@@ -1,6 +1,6 @@
 # Verification of facts (search verification)
 
-Only facts are verified. Opinions, advice and personal choices are stored as stated in the channel and are not verified. Nothing is marked confirmed without a search verification run by the verifying agent, using the search skill the owner provides. The owner does not verify by hand. The search skill itself is not part of this repo: the owner supplies it (set it up before the first run).
+Only facts are verified. Opinions, advice and personal choices are stored as stated in the channel and are not verified. Nothing is marked confirmed without a search verification run by the verifying agent, using the search skill the owner provides. The owner does not verify by hand. The search method is included: `deep-research-skill.md` (MIT, third-party, notice in `deep-research-LICENSE-MIT.txt`). Use its native mode only, which costs nothing. Dense or frontier mode needs the owner's approval first.
 
 ## Rules
 1. Make a plan first and show it to the owner: unit of checking (for example one fact per principle group), expected cost (zero unless the owner approves otherwise), and time. Do not run before the owner agrees to the plan.
