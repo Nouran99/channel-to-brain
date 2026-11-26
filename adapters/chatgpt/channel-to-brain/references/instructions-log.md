@@ -68,8 +68,9 @@ Why: The verification flow was not runnable from the repo alone.
 Scope: verification step (SKILL.md 7.8, references/verification.md).
 Replaces: none.
 
-### 2026-11-26 | instruction | No external model as judge when comparing packages
-Instruction: When two packages are compared, no external model is used as judge. Use rubric scoring only; the evaluator reads and scores the answers itself and explains how it scored.
-Why: The owner wants the comparison to be explainable and free of a second model's opinion.
-Scope: package comparison and evaluation runs.
+
+### 2026-11-27 | instruction | Add resources from video descriptions automatically
+Instruction: Any resource available in a video description (guides, newsletter, workshop material, public pages) is added to the package automatically, as a default step of the pipeline. Keep the no-credentials check: one newsletter file once exposed login data, so strip or exclude any secret before saving.
+Why: The owner wants the package to include the creator's own written material, not only video speech.
+Scope: every channel run; first applied to the Selim package. Resources stay local until the owner approves the package.
 Replaces: none.
