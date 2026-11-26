@@ -120,6 +120,12 @@ class Layout(unittest.TestCase):
         self.assertIn("## Spoken", ref)
         self.assertIn("references/verification.md", skill)
         self.assertTrue(os.path.exists(P("skills", "channel-to-brain", "references", "verification.md")))
+        lic = open(P("skills", "channel-to-brain", "references", "deep-research-LICENSE-MIT.txt"), encoding="utf-8").read()
+        self.assertIn("MIT License", lic)
+        self.assertIn("Eric Andrade", lic)
+        dr = open(P("skills", "channel-to-brain", "references", "deep-research-skill.md"), encoding="utf-8").read()
+        self.assertIn("deep-research-LICENSE-MIT.txt", dr)
+        self.assertFalse(dr.startswith("---"))
 
     @unittest.skipIf(tomllib is None, 'needs Python 3.11+ tomllib')
     def test_gemini_commands_toml(self):
@@ -178,7 +184,7 @@ class Layout(unittest.TestCase):
 
     def test_chatgpt_folder_has_no_scripts(self):
         self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain"))), ["LICENSE", "SKILL.md", "references"])
-        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["instructions-log.md", "knowledge-graph-step.md", "model-config.example.json", "principle-layer.md", "verification.md"])
+        self.assertEqual(sorted(os.listdir(P("adapters", "chatgpt", "channel-to-brain", "references"))), ["deep-research-LICENSE-MIT.txt", "deep-research-skill.md", "instructions-log.md", "knowledge-graph-step.md", "model-config.example.json", "principle-layer.md", "verification.md"])
 
     def test_principles_first_and_instructions_log(self):
         base = P("skills", "channel-to-brain")
