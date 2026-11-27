@@ -74,3 +74,9 @@ Instruction: Any resource available in a video description (guides, newsletter, 
 Why: The owner wants the package to include the creator's own written material, not only video speech.
 Scope: every channel run; first applied to the Selim package. Resources stay local until the owner approves the package.
 Replaces: none.
+
+### 2026-11-27 | instruction | Topic synthesis layer is a default core step
+Instruction: Build a topic-organised synthesis layer on top of the principles from the existing claims, by reading and writing, with no live model run. Keep every claim traceable to its video ID and keep verification tags beside facts. Make it a default core step of the plugin.
+Why: The old package answered topic questions better; the owner wants the new one organised by topic.
+Scope: every channel run; first applied to the Selim package.
+Replaces: none.
