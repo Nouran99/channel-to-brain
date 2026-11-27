@@ -14,6 +14,7 @@
 - Design principle added to SKILL.md section 1 and the instructions log (owner, 2026-11-27): use the knowledge for decisions outside the channel; linking ideas matters more than transcribing.
 - Standing rule (owner, 2026-11-27): each step that proves effective in the decision-transfer test is added as a default step with its measured result. First baseline: old 25.8, new 25.0 of 100 on 30 scenarios; connections between principles scored 0 for both.
 - Link layer (SKILL.md 7.15, `references/link-layer.md`, `scripts/link_layer.py`), experimental, run when the owner asks for it, added at the owner's request on 2026-11-27: decision cards and typed links written by the running agent, no paid API call. Measured on one package: retrieval over 100 scenarios 66 (old), 67 (cards), 75 (cards plus links); decision pilot option match 100 in all conditions (saturated), point coverage 80, 82, 86. Section 1 now states the two rules: cards and links by the agent, Gemini key for reading videos only.
+- Owner rules of 2026-11-27 (16:06 to 16:11): subagents with a fresh context for every splittable step and a reviewer on every task, local checks first then the client's own model (SKILL.md sections 3 and 7.11, rules 11 to 14); Gemini API only when YouTube data is needed and only with approval each time (section 1); per-stage token and quality suggestions in `references/efficiency-and-review.md`, unmeasured. Quality matters more than cost. Untested: no model run was made.
 - Known gaps: no client load or validator run, no live model call.
 
 ## 0.1.0 (2026-11-25)
