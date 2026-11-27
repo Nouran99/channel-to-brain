@@ -80,3 +80,9 @@ Instruction: Build a topic-organised synthesis layer on top of the principles fr
 Why: The old package answered topic questions better; the owner wants the new one organised by topic.
 Scope: every channel run; first applied to the Selim package.
 Replaces: none.
+
+### 2026-11-27 | instruction | Design principle: knowledge for decisions outside the channel
+Instruction: The goal is to use the channel's knowledge for decisions that are not part of the channel, by understanding the creator's way of thinking and decision mechanisms. Linking the content together, like a neural network, is more important than transcribing it.
+Why: The owner wants a working model of how the creator thinks and decides, not a copy of the content.
+Scope: every channel run and how packages are judged; recorded in SKILL.md section 1.
+Replaces: none. It refines the earlier principles-first goal.
