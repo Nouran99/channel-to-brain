@@ -104,3 +104,9 @@ Instruction: The Gemini API key is used only for content extraction analysis, wh
 Why: Keeps paid model use limited to the one step that needs a video-reading model.
 Scope: every channel run.
 Replaces: none.
+
+### 2026-11-27 | instruction | The 85% target is decision accuracy, measured without tuning on the test
+Instruction: The 85% target means decision accuracy from the given facts. It applies to both option match and required reasoning points. Measure it on a general, unbiased test. Choose any lever (prompt, step, setting) on a dev half only. Run the locked test half once, at the end. The target must not drive tuning on the test.
+Why: Tuning on the test would make the number meaningless.
+Scope: every decision-transfer test of a channel package.
+Replaces: none.
