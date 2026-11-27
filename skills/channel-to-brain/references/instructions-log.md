@@ -86,3 +86,9 @@ Instruction: The goal is to use the channel's knowledge for decisions that are n
 Why: The owner wants a working model of how the creator thinks and decides, not a copy of the content.
 Scope: every channel run and how packages are judged; recorded in SKILL.md section 1.
 Replaces: none. It refines the earlier principles-first goal.
+
+### 2026-11-27 | instruction | Add every step that proves effective
+Instruction: Any extra step that proves effective must be added to Channel to Brain, so the final goal is reached: links that help use the knowledge for thinking, inference and decision-making. Each step is added with its measured result, where effective means shown by the decision-transfer test.
+Why: The plugin should keep improving toward decisions outside the channel.
+Scope: every channel run; recorded in SKILL.md section 1.
+Replaces: none.
