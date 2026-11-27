@@ -92,3 +92,15 @@ Instruction: Any extra step that proves effective must be added to Channel to Br
 Why: The plugin should keep improving toward decisions outside the channel.
 Scope: every channel run; recorded in SKILL.md section 1.
 Replaces: none.
+
+### 2026-11-27 | instruction | Cards and links are done by the agent, not by a paid API call
+Instruction: Steps 2 and 3 (decision cards and links between them) are done by the agent itself that runs the plugin (Instinct, Claude, OpenAI or any agent), not by a paid API call.
+Why: The owner does not want per-run model cost for work the running agent can do.
+Scope: every channel run, link-layer steps.
+Replaces: none.
+
+### 2026-11-27 | instruction | The Gemini API key is for content extraction analysis only
+Instruction: The Gemini API key is used only for content extraction analysis, which means reading the videos. It is not used for cards, links, grouping or scoring. This is a general rule.
+Why: Keeps paid model use limited to the one step that needs a video-reading model.
+Scope: every channel run.
+Replaces: none.
