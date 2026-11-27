@@ -99,7 +99,7 @@ def gen():
         J("skills", "channel-to-brain", "references", "knowledge-graph-step.md"), encoding="utf-8").read()
     out["adapters/chatgpt/channel-to-brain/references/principle-layer.md"] = open(
         J("skills", "channel-to-brain", "references", "principle-layer.md"), encoding="utf-8").read()
-    for extra in ("verification.md", "model-config.example.json", "deep-research-skill.md", "deep-research-LICENSE-MIT.txt", "resources.md"):
+    for extra in ("verification.md", "model-config.example.json", "deep-research-skill.md", "deep-research-LICENSE-MIT.txt", "resources.md", "topic-synthesis.md"):
         out["adapters/chatgpt/channel-to-brain/references/" + extra] = open(
             J("skills", "channel-to-brain", "references", extra), encoding="utf-8").read()
     out["adapters/chatgpt/channel-to-brain/references/instructions-log.md"] = open(
