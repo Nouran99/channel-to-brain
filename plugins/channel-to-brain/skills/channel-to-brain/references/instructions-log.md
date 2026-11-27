@@ -110,3 +110,21 @@ Instruction: The 85% target means decision accuracy from the given facts. It app
 Why: Tuning on the test would make the number meaningless.
 Scope: every decision-transfer test of a channel package.
 Replaces: none.
+
+### 2026-11-27 | instruction | Use the Gemini API only when YouTube data is needed, with approval each time
+Instruction: The Gemini API is used only when YouTube data is needed, and only with the user's approval each time. Every other step runs on the normal quota of the client that runs the plugin (Claude, Codex, OpenCode or another).
+Why: Keeps API use to the one step that needs it and everything else on the quota the user already has.
+Scope: whole method.
+Replaces: refines 2026-11-27 "The Gemini API key is for content extraction analysis only".
+
+### 2026-11-27 | instruction | Fresh-context subagents and a reviewer on every task
+Instruction: Every step that can be split into independent tasks is done by subagents with a fresh context window each. A separate reviewer with a fresh context checks every task: local checks first, then the client's own model, never an API or external model as judge. Quality matters more than cost.
+Why: Smaller contexts per task, and a check on every piece of work.
+Scope: section 7.11 and every run in a client that supports subagents.
+Replaces: the "optional subagents" wording in section 3.
+
+### 2026-11-27 | instruction | Per-stage token and quality suggestions are part of the design, unmeasured
+Instruction: The per-stage token and quality suggestions in `references/efficiency-and-review.md` are part of the plugin design. They are reasoning only and none is measured. Add a measured result beside each one that an approved run tests.
+Why: The owner asked for lower token use and better quality without extra cost.
+Scope: stages 1 to 7 and question time.
+Replaces: none.
