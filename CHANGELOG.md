@@ -11,6 +11,7 @@
 - Instructions log: no live model run without the owner's approval each time.
 - Creator resources (SKILL.md 7.13, `references/resources.md`, `scripts/resource_scan.py`): resources linked in video descriptions are added by default, with a required secret check. Owner rule of 2026-11-27.
 - Topic synthesis layer (SKILL.md 7.14, `references/topic-synthesis.md`, `scripts/topic_synthesis.py`): claims grouped by topic with video IDs and tags kept, a default core step. Owner instruction of 2026-11-27. First measured effect on the 300-question test: small (26.4 to 27.2).
+- Design principle added to SKILL.md section 1 and the instructions log (owner, 2026-11-27): use the knowledge for decisions outside the channel; linking ideas matters more than transcribing.
 - Known gaps: no client load or validator run, no live model call.
 
 ## 0.1.0 (2026-11-25)
