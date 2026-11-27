@@ -259,6 +259,9 @@ Run it after the notes exist and the user has seen the expected cost: type and i
 ### 7.13 Creator resources (default step)
 Every resource available through a video description is added to the package automatically (the owner's rule of 2026-11-27): free guides, newsletter posts, workshop material, prompt files and public pages the creator links. Run it after inventory and again before the package is final. Steps, the required secret check (`scripts/resource_scan.py`, run until it prints "clean"; strip or exclude anything it finds) and limits are in `references/resources.md`. Resources stay local until the owner approves the package.
 
+### 7.14 Topic synthesis layer (default core step)
+After the principle layer and the resources step, build the topic synthesis: claims grouped by subject topic, copied unchanged with their video IDs and tags, method steps first (the owner's instruction of 2026-11-27). Write the topic map from the channel's subject, never from test questions; run `scripts/topic_synthesis.py <package> topics.json` (no model call, no cost); read a sample and fix the keywords; state in the README and COVERAGE that it only regroups existing claims. Steps, limits and the first measured result are in `references/topic-synthesis.md`.
+
 ## 8. Error handling for the model API
 Record the exact status and sanitized error text for every failure. Under the user's global rule (section 2), every failure is a stop-and-ask point: stop the affected work, report the grounded problem with a proposed next step, and wait for the user's answer. A retry, a wait-and-continue, a route switch or any other recovery happens only when the user has expressly approved that recovery for that case. Researching options while waiting is fine; acting on them is not.
 
