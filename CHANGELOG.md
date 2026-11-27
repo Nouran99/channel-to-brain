@@ -13,6 +13,7 @@
 - Topic synthesis layer (SKILL.md 7.14, `references/topic-synthesis.md`, `scripts/topic_synthesis.py`): claims grouped by topic with video IDs and tags kept, a default core step. Owner instruction of 2026-11-27. First measured effect on the 300-question test: small (26.4 to 27.2).
 - Design principle added to SKILL.md section 1 and the instructions log (owner, 2026-11-27): use the knowledge for decisions outside the channel; linking ideas matters more than transcribing.
 - Standing rule (owner, 2026-11-27): each step that proves effective in the decision-transfer test is added as a default step with its measured result. First baseline: old 25.8, new 25.0 of 100 on 30 scenarios; connections between principles scored 0 for both.
+- Link layer (SKILL.md 7.15, `references/link-layer.md`, `scripts/link_layer.py`), experimental, run when the owner asks for it, added at the owner's request on 2026-11-27: decision cards and typed links written by the running agent, no paid API call. Measured on one package: retrieval over 100 scenarios 66 (old), 67 (cards), 75 (cards plus links); decision pilot option match 100 in all conditions (saturated), point coverage 80, 82, 86. Section 1 now states the two rules: cards and links by the agent, Gemini key for reading videos only.
 - Known gaps: no client load or validator run, no live model call.
 
 ## 0.1.0 (2026-11-25)
